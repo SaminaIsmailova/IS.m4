@@ -45,6 +45,7 @@ class TaskFragment : Fragment() {
                 findNavController().navigateUp()
             }
         } else {
+
             binding.btnSave.setOnClickListener {
                 val data = Task(
                     title = binding.etTitle.text.toString(),
