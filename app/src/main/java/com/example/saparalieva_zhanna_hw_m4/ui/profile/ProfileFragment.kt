@@ -21,17 +21,10 @@ import kotlinx.coroutines.selects.select
 
 
 class ProfileFragment : Fragment() {
+
     private lateinit var binding: FragmentProfileBinding
     private val pref by lazy {
         Pref(requireContext())
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        binding = FragmentProfileBinding.inflate(inflater, container, false)
-        return binding.root
     }
 
     private val openGallery =
@@ -43,22 +36,27 @@ class ProfileFragment : Fragment() {
             }
         }
 
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        binding = FragmentProfileBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.profileImage.loadImage(pref.getImage())
         binding.etName.setText(pref.getName())
-
 
         binding.profileImage.setOnClickListener {
             val intent = Intent(Intent.ACTION_PICK)
             intent.setType("image/*")
             openGallery.launch(intent)
         }
-
-
         binding.btnSave.setOnClickListener {
             pref.saveName(binding.etName.text.toString())
         }
-
     }
+
 }
