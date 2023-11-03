@@ -1,6 +1,7 @@
 package com.example.saparalieva_zhanna_hw_m4.ui.home.adapter
 
 import android.app.AlertDialog
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -37,11 +38,17 @@ class TaskAdapter(
 
     override fun onBindViewHolder(holder: TaskViewHolder, position: Int) {
         holder.bind(list[position])
+
+        val backgroundColor = if (position % 2 == 0) Color.WHITE else Color.BLACK
+
+
+        holder.itemView.setBackgroundColor(backgroundColor)
+
     }
 
     override fun getItemCount() = list.size
 
-    inner class TaskViewHolder(private val binding: ItemTaskBinding) : ViewHolder(binding.root) {
+    inner class TaskViewHolder(internal val binding: ItemTaskBinding) : ViewHolder(binding.root) {
         fun bind(task: Task) {
             itemView.setOnLongClickListener(View.OnLongClickListener {
                 onLongClick(task)
@@ -53,6 +60,11 @@ class TaskAdapter(
 
             binding.tvTitle.text = task.title
             binding.tvDesc.text = task.desc
+
+            val textColor = if (position % 2 == 0) Color.BLACK else Color.WHITE
+            binding.tvTitle.setTextColor(textColor)
+            binding.tvDesc.setTextColor(textColor)
+
         }
     }
 

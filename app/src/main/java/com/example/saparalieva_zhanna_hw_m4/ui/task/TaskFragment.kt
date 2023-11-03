@@ -1,12 +1,10 @@
 package com.example.saparalieva_zhanna_hw_m4.ui.task
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.os.bundleOf
-import androidx.fragment.app.setFragmentResult
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.saparalieva_zhanna_hw_m4.App
 import com.example.saparalieva_zhanna_hw_m4.R
@@ -27,38 +25,49 @@ class TaskFragment : Fragment() {
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?): Unit = with(binding) {
         super.onViewCreated(view, savedInstanceState)
 
         task = arguments?.getSerializable(TASK_KEY) as Task?
         binding.etDesc.setText(task?.desc)
         binding.etTitle.setText(task?.title)
-        if (task != null) with(binding) {
+        if (task != null) {
             btnSave.text = getString(R.string.update)
-
             btnSave.setOnClickListener {
-                var updatedTask = task?.copy(
-                    title = etTitle.text.toString(),
-                    desc = etDesc.text.toString()
-                )
-                App.db.taskDao().upDate(updatedTask!!)
-                findNavController().navigateUp()
+                upDate()
             }
         } else {
-
             binding.btnSave.setOnClickListener {
-                val data = Task(
-                    title = binding.etTitle.text.toString(),
-                    desc = binding.etDesc.text.toString()
-                )
-                App.db.taskDao().insert(data)
-                findNavController().navigateUp()
+                save()
             }
+
         }
+
     }
+
+    private fun upDate() = with(binding) {
+        var updatedTask = task?.copy(
+            title = etTitle.text.toString(),
+            desc = etDesc.text.toString()
+        )
+        App.db.taskDao().upDate(updatedTask!!)
+        findNavController().navigateUp()
+
+    }
+
+    private fun save() = with(binding) {
+        val data = Task(
+            title = etTitle.text.toString(),
+            desc = etDesc.text.toString()
+        )
+        App.db.taskDao().insert(data)
+        findNavController().navigateUp()
+    }
+
 
     companion object {
         const val RESULT_KEY = "result.key"
         const val TASK_KEY = "task.key"
     }
+
 }

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "498879033475",
+    "project_id": "saparalieva-zhanna-hw-m4",
+    "storage_bucket": "saparalieva-zhanna-hw-m4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:498879033475:android:46877124da0135dbd12bb6",
+        "android_client_info": {
+          "package_name": "com.example.saparalieva_zhanna_hw_m4"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBbBtwHiXlg9Ih8NVXvAIBR0fv3gm9MPT4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
