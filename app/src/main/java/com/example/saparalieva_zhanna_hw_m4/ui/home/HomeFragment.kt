@@ -11,7 +11,6 @@ import androidx.navigation.fragment.findNavController
 import com.example.saparalieva_zhanna_hw_m4.App
 import com.example.saparalieva_zhanna_hw_m4.R
 import com.example.saparalieva_zhanna_hw_m4.databinding.FragmentHomeBinding
-import com.example.saparalieva_zhanna_hw_m4.databinding.FragmentTaskBinding
 import com.example.saparalieva_zhanna_hw_m4.model.Task
 import com.example.saparalieva_zhanna_hw_m4.ui.home.adapter.TaskAdapter
 import com.example.saparalieva_zhanna_hw_m4.ui.task.TaskFragment

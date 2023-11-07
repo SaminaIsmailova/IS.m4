@@ -5,7 +5,6 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
-import com.example.saparalieva_zhanna_hw_m4.databinding.FragmentOnBoardingBinding
 import com.example.saparalieva_zhanna_hw_m4.databinding.ItemOnboardingBinding
 import com.example.saparalieva_zhanna_hw_m4.model.OnBoarding
 import com.example.saparalieva_zhanna_hw_m4.utils.loadImage
