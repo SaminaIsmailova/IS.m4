@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.saparalieva_zhanna_hw_m4.App
@@ -27,6 +28,13 @@ class TaskFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?): Unit = with(binding) {
         super.onViewCreated(view, savedInstanceState)
+
+        val inputText = binding.outlinedTextField.editText?.text.toString()
+        binding.outlinedTextField.editText?.doOnTextChanged { inputText, _, _, _ ->
+        }
+        val inputTextDesc = binding.title.editText?.text.toString()
+        binding.outlinedTextField.editText?.doOnTextChanged { inputText, _, _, _ ->
+        }
 
         task = arguments?.getSerializable(TASK_KEY) as Task?
         binding.etDesc.setText(task?.desc)

@@ -1,13 +1,18 @@
 package com.example.saparalieva_zhanna_hw_m4.ui.profile
 
 import android.app.Activity.RESULT_OK
+import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import com.example.saparalieva_zhanna_hw_m4.App
+import com.example.saparalieva_zhanna_hw_m4.R
 import com.example.saparalieva_zhanna_hw_m4.data.local.Pref
 import com.example.saparalieva_zhanna_hw_m4.databinding.FragmentProfileBinding
 import com.example.saparalieva_zhanna_hw_m4.utils.loadImage
@@ -49,6 +54,24 @@ class ProfileFragment : Fragment() {
         }
         binding.btnSave.setOnClickListener {
             pref.saveName(binding.etName.text.toString())
+        }
+
+        binding.imgExit.setOnClickListener {
+            val builder = AlertDialog.Builder(requireContext())
+            builder
+                .setTitle(getString(R.string.exit))
+                .setMessage(getString(R.string.are_you_sure_exit))
+                .setNegativeButton(getString(R.string.no)) { dialog, i ->
+                    dialog.dismiss()
+                }
+                .setPositiveButton(getString(R.string.yes)) { dialog, i ->
+                    findNavController().navigate(R.id.phoneFragment)
+                }
+                .show()
+        }
+
+        val inputText = binding.outlinedTextField.editText?.text.toString()
+        binding.outlinedTextField.editText?.doOnTextChanged { inputText, _, _, _ ->
         }
     }
 

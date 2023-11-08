@@ -10,4 +10,7 @@
     <string name="no">Нет</string>
     <string name="yes">Да</string>
     <string name="update">update</string>
+    <string name="exit">Выход</string>
+    <string name="are_you_sure_exit">Вы точно хотите выйти?</string>
+    <string name="upload_success">Данные успешно сохранены.</string>
 </resources>

@@ -1,11 +1,14 @@
 package com.example.saparalieva_zhanna_hw_m4.ui.auth.phone
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
+import androidx.core.widget.doOnTextChanged
 import androidx.navigation.fragment.findNavController
 import com.example.saparalieva_zhanna_hw_m4.R
 import com.example.saparalieva_zhanna_hw_m4.databinding.FragmentPhoneBinding
@@ -52,12 +55,16 @@ class PhoneFragment : Fragment() {
 
         binding.btnSend.setOnClickListener {
             val options = PhoneAuthOptions.newBuilder(FirebaseAuth.getInstance())
-                .setPhoneNumber(binding.etPhone.toString()) // Phone number to verify
+                .setPhoneNumber(binding.etPhone.text.toString()) // Phone number to verify
                 .setTimeout(60L, TimeUnit.SECONDS) // Timeout and unit
                 .setActivity(requireActivity()) // Activity (for callback binding)
                 .setCallbacks(callbacks) // OnVerificationStateChangedCallbacks
                 .build()
             PhoneAuthProvider.verifyPhoneNumber(options)
+        }
+
+        val inputText = binding.outlinedTextField.editText?.text.toString()
+        binding.outlinedTextField.editText?.doOnTextChanged { inputText, _, _, _ ->
         }
     }
 

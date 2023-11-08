@@ -1,9 +1,13 @@
 package com.example.saparalieva_zhanna_hw_m4.ui.auth.code
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.widget.addTextChangedListener
+import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.saparalieva_zhanna_hw_m4.R
@@ -32,6 +36,11 @@ class CodeFragment : Fragment() {
             val credential = PhoneAuthProvider.getCredential(verId!!, binding.etCode.text.toString())
 
             signInWithPhoneAuthCredential(credential)
+            findNavController().navigate(R.id.navigation_home)
+        }
+
+        val inputText = binding.outlinedTextField.editText?.text.toString()
+        binding.outlinedTextField.editText?.doOnTextChanged { inputText, _, _, _ ->
         }
     }
     private fun signInWithPhoneAuthCredential(credential: PhoneAuthCredential) {
@@ -44,4 +53,6 @@ class CodeFragment : Fragment() {
             context?.showToast(it.message.toString())
             }
     }
+
+
 }
