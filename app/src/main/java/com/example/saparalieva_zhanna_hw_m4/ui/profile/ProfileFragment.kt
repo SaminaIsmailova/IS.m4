@@ -16,6 +16,7 @@ import com.example.saparalieva_zhanna_hw_m4.R
 import com.example.saparalieva_zhanna_hw_m4.data.local.Pref
 import com.example.saparalieva_zhanna_hw_m4.databinding.FragmentProfileBinding
 import com.example.saparalieva_zhanna_hw_m4.utils.loadImage
+import com.google.firebase.auth.FirebaseAuth
 
 
 class ProfileFragment : Fragment() {
@@ -65,6 +66,7 @@ class ProfileFragment : Fragment() {
                     dialog.dismiss()
                 }
                 .setPositiveButton(getString(R.string.yes)) { dialog, i ->
+                    FirebaseAuth.getInstance().signOut()
                     findNavController().navigate(R.id.phoneFragment)
                 }
                 .show()
